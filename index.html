@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshlyn Allen — Data Center Technician</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --panel: #FFFFFF;
+    --ink: #1C2430;
+    --ink-soft: #55606E;
+    --line: #D8DEE6;
+    --line-strong: #B7C0CC;
+    --blue: #2B6CB0;
+    --blue-soft: #E7F0F9;
+    --teal: #2F8F7F;
+    --teal-soft: #E4F3EF;
+    --display: 'Space Grotesk', sans-serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --maxw: 880px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(247, 248, 250, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    font-size: 0.92rem;
+    font-family: var(--mono);
+  }
+  .nav-links a { color: var(--ink-soft); margin-left: 22px; }
+  .nav-links a:first-child { margin-left: 0; }
+  .nav-links a:hover { color: var(--blue); text-decoration: none; }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--teal);
+    margin: 0 0 14px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.1rem, 4.4vw, 2.9rem);
+    line-height: 1.12;
+    margin: 0 0 16px;
+    max-width: 11ch;
+  }
+  .hero p.lede {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 26px;
+  }
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-family: var(--mono);
+    font-size: 0.86rem;
+  }
+  .hero-contact a { color: var(--ink); margin-right: 4px; }
+  .hero-contact a:hover { color: var(--blue); }
+  .hero-contact span.sep { color: var(--line-strong); }
+
+  .topo { width: 100%; height: auto; }
+  .topo .line {
+    stroke: var(--line-strong);
+    stroke-width: 1.4;
+    fill: none;
+  }
+  .topo .node-core { fill: var(--ink); }
+  .topo .node { fill: var(--panel); stroke: var(--blue); stroke-width: 1.6; }
+  .topo .node-teal { stroke: var(--teal); }
+  .topo text {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    fill: var(--ink-soft);
+  }
+  .topo text.core-label { fill: var(--bg); font-size: 9.5px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .topo .line { stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw 1.1s ease-out forwards; }
+    .topo .node { opacity: 0; transform-origin: center; animation: pop 0.5s ease-out forwards; }
+    .topo .node1 { animation-delay: 0.5s; }
+    .topo .node2 { animation-delay: 0.65s; }
+    .topo .node3 { animation-delay: 0.8s; }
+    .topo .node4 { animation-delay: 0.95s; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pop { to { opacity: 1; } }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--teal);
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* About */
+  .about-text { max-width: 62ch; color: var(--ink-soft); font-size: 1.02rem; }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 30px;
+  }
+  .stat {
+    background: var(--panel);
+    padding: 18px 20px;
+  }
+  .stat .num {
+    font-family: var(--mono);
+    font-size: 1.3rem;
+    color: var(--blue);
+    display: block;
+  }
+  .stat .label {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* Skills */
+  .skill-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  .skill-group dt {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .skill-group dd {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  /* Coursework */
+  .course-list { border-top: 1px solid var(--line); }
+  .course-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+  .course-row .name { font-size: 0.97rem; }
+  .grade {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 2px 8px;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .grade.a { color: var(--teal); border-color: var(--teal); background: var(--teal-soft); }
+  .grade.b { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+
+  /* Certifications */
+  .cert-list { list-style: none; margin: 0; padding: 0; }
+  .cert-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .cert-list li:last-child { border-bottom: none; }
+  .node-dot {
+    width: 8px; height: 8px;
+    background: var(--blue);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .cert-list .cert-name { font-weight: 500; }
+  .cert-list .cert-org { color: var(--ink-soft); font-size: 0.9rem; }
+
+  /* Projects (empty state) */
+  .empty-panel {
+    border: 1px dashed var(--line-strong);
+    padding: 28px 24px;
+    color: var(--ink-soft);
+  }
+  .empty-panel p { margin: 0 0 12px; }
+  .empty-panel a.cta {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--blue);
+  }
+
+  /* Contact / footer */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 28px;
+    font-family: var(--mono);
+    font-size: 0.92rem;
+  }
+  .contact-grid a { color: var(--ink); }
+  .contact-grid a:hover { color: var(--blue); }
+  .contact-grid .k { display: block; color: var(--ink-soft); font-size: 0.76rem; margin-bottom: 4px; }
+
+  footer {
+    padding: 26px 0 40px;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .topo { max-width: 340px; margin: 0 auto; }
+    .stat-row { grid-template-columns: 1fr; }
+    .skill-groups { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: repeat(2, auto); }
+    nav .wrap { flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 12px; row-gap: 8px; }
+    .nav-links { gap: 10px 12px; font-size: 0.74rem; flex-wrap: wrap; width: 100%; }
+    .nav-links a { margin-left: 0; margin-right: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Joshlyn Allen</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#coursework">Coursework</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-eyebrow">Entry-Level Data Center Technician</p>
+      <h1>Joshlyn Allen</h1>
+      <p class="lede">Cyber Security student building toward server, network, and hardware support work — currently completing an AAS in Cyber Security at Bossier Parish Community College, graduating December 2026.</p>
+      <div class="hero-contact">
+        <a href="mailto:jlyntech571@gmail.com">jlyntech571@gmail.com</a>
+        <span class="sep">/</span>
+        <a href="tel:9453857642">(945) 385-7642</a>
+        <span class="sep">/</span>
+        <a href="https://linkedin.com/in/joshlyn-allen" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">/</span>
+        <a href="https://github.com/JlynTech" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <svg class="topo" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram connecting core skills: Linux, Windows Server, Networking, and Security">
+      <path class="line" d="M150 110 L70 50" />
+      <path class="line" d="M150 110 L230 50" />
+      <path class="line" d="M150 110 L60 160" />
+      <path class="line" d="M150 110 L240 160" />
+
+      <circle class="node-core" cx="150" cy="110" r="20" />
+      <text class="core-label" x="150" y="107" text-anchor="middle">JOSH</text>
+      <text class="core-label" x="150" y="118" text-anchor="middle">LYN</text>
+
+      <circle class="node node1" cx="70" cy="50" r="15" />
+      <text x="70" y="30" text-anchor="middle">Linux</text>
+
+      <circle class="node node2 node-teal" cx="230" cy="50" r="15" />
+      <text x="230" y="30" text-anchor="middle">Windows Srv</text>
+
+      <circle class="node node3 node-teal" cx="60" cy="160" r="15" />
+      <text x="60" y="190" text-anchor="middle">Networking</text>
+
+      <circle class="node node4" cx="240" cy="160" r="15" />
+      <text x="240" y="190" text-anchor="middle">Security</text>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">01</span><h2>About</h2></div>
+      <p class="about-text">
+        I'm an IT student pursuing an <strong>Associate of Applied Science in Cyber Security</strong> at Bossier Parish Community College, expected <strong>December 2026</strong>. My coursework covers Linux and Windows Server administration, networking fundamentals through CCNA, hardware and help desk support, and network security design. I'm looking for an entry-level <strong>Data Center Technician</strong> role where I can apply that foundation hands-on — racking hardware, running cable, and keeping critical systems online.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><span class="num">3.59</span><span class="label">Expected GPA</span></div>
+        <div class="stat"><span class="num">Dec 2026</span><span class="label">Graduation</span></div>
+        <div class="stat"><span class="num">4</span><span class="label">Certifications earned</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">02</span><h2>Technical Skills</h2></div>
+      <dl class="skill-groups">
+        <div class="skill-group">
+          <dt>Server Administration</dt>
+          <dd>Linux Server, Microsoft Windows Servers</dd>
+        </div>
+        <div class="skill-group">
+          <dt>Networking</dt>
+          <dd>Network Essentials, CCNA I — IP addressing, switching &amp; routing fundamentals, cabling</dd>
+        </div>
+        <div class="skill-group">
+          <dt>Hardware &amp; Support</dt>
+          <dd>IT Hardware Support, IT Software Support, Help Desk Operations</dd>
+        </div>
+        <div class="skill-group">
+          <dt>Security</dt>
+          <dd>Information Assurance, Network Security Design</dd>
+        </div>
+        <div class="skill-group">
+          <dt>Scripting</dt>
+          <dd>Python, Introduction to Scripting, HTML5/CSS3</dd>
+        </div>
+        <div class="skill-group">
+          <dt>Working Style</dt>
+          <dd>Detail-oriented, safety-conscious, comfortable on flexible/shift schedules</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="coursework">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">03</span><h2>Relevant Coursework</h2></div>
+      <div class="course-list">
+        <div class="course-row"><span class="name">Linux Server</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">Microsoft Windows Servers</span><span class="grade">In progress</span></div>
+        <div class="course-row"><span class="name">Network Essentials</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">CCNA I</span><span class="grade b">B</span></div>
+        <div class="course-row"><span class="name">IT Hardware Support</span><span class="grade b">B</span></div>
+        <div class="course-row"><span class="name">IT Software Support</span><span class="grade b">B</span></div>
+        <div class="course-row"><span class="name">Help Desk Operations</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">Information Assurance</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">Network Security Design</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">Introduction to Scripting</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">Problem Solving &amp; Programming Techniques (Python)</span><span class="grade a">A</span></div>
+        <div class="course-row"><span class="name">HTML5/CSS3</span><span class="grade">In progress</span></div>
+        <div class="course-row"><span class="name">IT Project Management</span><span class="grade">In progress</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">04</span><h2>Certifications</h2></div>
+      <ul class="cert-list">
+        <li>
+          <span class="node-dot"></span>
+          <div><div class="cert-name">Career &amp; Technical Certificate — Computer Repair</div><div class="cert-org">Bossier Parish Community College</div></div>
+        </li>
+        <li>
+          <span class="node-dot"></span>
+          <div><div class="cert-name">Career &amp; Technical Certificate — Network Security</div><div class="cert-org">Bossier Parish Community College</div></div>
+        </li>
+        <li>
+          <span class="node-dot"></span>
+          <div><div class="cert-name">Career &amp; Technical Certificate — Help Desk</div><div class="cert-org">Bossier Parish Community College</div></div>
+        </li>
+        <li>
+          <span class="node-dot"></span>
+          <div><div class="cert-name">CCNA — Introduction to Networks</div><div class="cert-org">Cisco Networking Academy</div></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">05</span><h2>Projects</h2></div>
+      <div class="empty-panel">
+        <p>Projects are being uploaded as they're completed — Packet Tracer network labs, Python scripts, and course work builds.</p>
+        <a class="cta" href="https://github.com/JlynTech?tab=repositories" target="_blank" rel="noopener">See current repositories on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">06</span><h2>Contact</h2></div>
+      <div class="contact-grid">
+        <div><span class="k">Email</span><a href="mailto:jlyntech571@gmail.com">jlyntech571@gmail.com</a></div>
+        <div><span class="k">Phone</span><a href="tel:9453857642">(945) 385-7642</a></div>
+        <div><span class="k">LinkedIn</span><a href="https://linkedin.com/in/joshlyn-allen" target="_blank" rel="noopener">/in/joshlyn-allen</a></div>
+        <div><span class="k">GitHub</span><a href="https://github.com/JlynTech" target="_blank" rel="noopener">/JlynTech</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Rowlett, Texas — built and maintained by Joshlyn Allen</div>
+</footer>
+
+</body>
+</html>
